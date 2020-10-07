@@ -66,6 +66,12 @@ class Scene2 extends Phaser.Scene {
     this.ship2.play("ship2_anim");
     this.ship3.play("ship3_anim");
 
+    this.ship1.setInteractive();
+    this.ship2.setInteractive();
+    this.ship3.setInteractive();
+
+    this.input.on("gameobjectdown", this.destroyShip, this);
+
     this.add.text(20, 20, "Playing game", {
       font: "25px Arial",
       fill: "yellow",
@@ -89,5 +95,10 @@ class Scene2 extends Phaser.Scene {
     ship.y = 0;
     var randomX = Phaser.Math.Between(0, config.width);
     ship.x = randomX;
+  }
+
+  destroyShip(pointer, gameObject) {
+    gameObject.setTexture("explosion");
+    gameObject.play("explode");
   }
 }
