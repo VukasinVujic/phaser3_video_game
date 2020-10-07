@@ -112,7 +112,9 @@ class Scene2 extends Phaser.Scene {
       }
       // moving powerUp by 100 on x axis , and 120 on y axis
       powerUp.setVelocity(100, 120);
+      // making balls end up in bottom right corner
       powerUp.setCollideWorldBounds(true);
+      // make the balls move around the screen acording to what you put in setVelocity
       powerUp.setBounce(1);
     }
   }
