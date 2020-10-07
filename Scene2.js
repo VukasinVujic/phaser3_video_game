@@ -4,7 +4,17 @@ class Scene2 extends Phaser.Scene {
   }
   preload() {}
   create() {
-    this.background = this.add.image(0, 0, "background");
+    // for fixed background image
+    // this.background = this.add.image(0, 0, "background");
+
+    // make the background move
+    this.background = this.add.tileSprite(
+      0,
+      0,
+      config.width,
+      config.height,
+      "background"
+    );
     this.background.setOrigin(0, 0);
 
     this.ship1 = this.add.image(
@@ -30,6 +40,8 @@ class Scene2 extends Phaser.Scene {
     this.moveShip(this.ship1, 1);
     this.moveShip(this.ship2, 2);
     this.moveShip(this.ship3, 3);
+
+    this.background.tilePositionY -= 0.5;
   }
 
   moveShip(ship, speed) {
